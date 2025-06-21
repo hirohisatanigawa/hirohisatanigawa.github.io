@@ -259,8 +259,30 @@ class GhostBustersGame {
         // レア度に応じてクラスを追加
         ghostElement.classList.add(`rarity-${character.rarity}`);
         const gameAreaRect = this.gameArea.getBoundingClientRect();
-        const x = Math.random() * (gameAreaRect.width - 60);
-        const y = Math.random() * (gameAreaRect.height - 100);
+        const playerElement = document.getElementById('player');
+        let x, y;
+        let attempts = 0;
+        const maxAttempts = 50;
+        const minDistance = 150; // プレイヤーから最低150px離す
+        do {
+            x = Math.random() * (gameAreaRect.width - 60);
+            y = Math.random() * (gameAreaRect.height - 100);
+            attempts++;
+            // プレイヤーとの距離をチェック
+            if (playerElement) {
+                const playerRect = playerElement.getBoundingClientRect();
+                const playerCenterX = playerRect.left + playerRect.width / 2 - gameAreaRect.left;
+                const playerCenterY = playerRect.top + playerRect.height / 2 - gameAreaRect.top;
+                const distance = Math.sqrt(Math.pow(x + 30 - playerCenterX, 2) +
+                    Math.pow(y + 30 - playerCenterY, 2));
+                if (distance >= minDistance) {
+                    break; // 十分離れている
+                }
+            }
+            else {
+                break; // プレイヤーが見つからない場合はそのまま配置
+            }
+        } while (attempts < maxAttempts);
         ghostElement.style.left = x + 'px';
         ghostElement.style.top = y + 'px';
         const ghost = {
