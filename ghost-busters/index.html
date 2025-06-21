@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴーストバスターズ - 子供向けゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🔫 ゴーストバスターズ 👻</h1>
+            <div class="score-board">
+                <div class="score">スコア: <span id="score">0</span></div>
+                <div class="lives">❤️ ライフ: <span id="lives">3</span></div>
+            </div>
+        </header>
+
+        <div class="game-area" id="gameArea">
+            <div class="player" id="player">🦸‍♂️</div>
+            <div class="crosshair" id="crosshair">⊕</div>
+        </div>
+
+        <div class="difficulty-selection" id="difficultySelection">
+            <h2>難易度を選んでね！</h2>
+            <div class="difficulty-buttons">
+                <button id="easyBtn" class="difficulty-btn easy">
+                    😊 かんたん
+                    <small>ゴーストがゆっくり動くよ</small>
+                </button>
+                <button id="normalBtn" class="difficulty-btn normal">
+                    😐 ふつう
+                    <small>ちょうどいいスピードだよ</small>
+                </button>
+                <button id="hardBtn" class="difficulty-btn hard">
+                    😤 むずかしい
+                    <small>ゴーストが速く動くよ！</small>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="startBtn" class="start-btn">ゲームスタート！</button>
+            <button id="pauseBtn" class="pause-btn" style="display: none;">一時停止</button>
+            <button id="resetBtn" class="reset-btn" style="display: none;">最初からやり直し</button>
+            <button id="backBtn" class="back-btn" style="display: none;">難易度選択に戻る</button>
+            <button id="historyBtn" class="history-btn">🏆 スコア履歴</button>
+        </div>
+
+        <div class="game-over" id="gameOver" style="display: none;">
+            <h2>ゲーム終了！</h2>
+            <p>最終スコア: <span id="finalScore">0</span></p>
+            <button id="restartBtn" class="restart-btn">もう一度プレイ</button>
+        </div>
+
+        <!-- スコア履歴モーダル -->
+        <div class="history-modal" id="historyModal" style="display: none;">
+            <div class="history-content">
+                <div class="history-header">
+                    <h2>🏆 スコア履歴</h2>
+                    <button id="closeHistoryBtn" class="close-btn">✕</button>
+                </div>
+                <div class="history-body">
+                    <div id="historyList" class="history-list">
+                        <!-- スコア記録がここに表示される -->
+                    </div>
+                </div>
+                <div class="history-footer">
+                    <button id="clearHistoryBtn" class="clear-history-btn">履歴をクリア</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>遊び方：</h3>
+            <p>👻 ゴーストをクリックしてやっつけよう！</p>
+            <p>🎯 たくさんやっつけてスコアを上げよう！</p>
+            <p>❤️ ゴーストがプレイヤーに触れるとライフが減るよ！</p>
+            <p>❤️ ライフが0になるとゲーム終了だよ！</p>
+            
+            <h3>キャラクタースコア表：</h3>
+            <div class="character-table" id="characterTable">
+                <div class="character-row">
+                    <span class="character-emoji">👻</span>
+                    <span class="character-name">ふつうのゴースト</span>
+                    <span class="character-score" data-base-score="10">10点</span>
+                </div>
+                <div class="character-row">
+                    <span class="character-emoji">🧙‍♀️</span>
+                    <span class="character-name">まじょ</span>
+                    <span class="character-score" data-base-score="15">15点</span>
+                </div>
+                <div class="character-row">
+                    <span class="character-emoji">🧙‍♂️</span>
+                    <span class="character-name">まじょつかい</span>
+                    <span class="character-score" data-base-score="15">15点</span>
+                </div>
+                <div class="character-row">
+                    <span class="character-emoji">🎃</span>
+                    <span class="character-name">ハロウィンかぼちゃ</span>
+                    <span class="character-score" data-base-score="25">25点</span>
+                </div>
+                <div class="character-row">
+                    <span class="character-emoji">🧟‍♀️</span>
+                    <span class="character-name">ゾンビガール</span>
+                    <span class="character-score" data-base-score="30">30点</span>
+                </div>
+                <div class="character-row">
+                    <span class="character-emoji">🧟‍♂️</span>
+                    <span class="character-name">ゾンビボーイ</span>
+                    <span class="character-score" data-base-score="30">30点</span>
+                </div>
+            </div>
+            
+            <div class="rare-character-hint">
+                <h4>✨ もしかしたら出てくるかも？？ ✨</h4>
+                <div class="rare-hint-row">
+                    <span class="rare-emoji">❓</span>
+                    <span class="rare-text">レアキャラクター</span>
+                    <span class="rare-score">高得点！</span>
+                </div>
+                <div class="rare-hint-row">
+                    <span class="rare-emoji">⭐</span>
+                    <span class="rare-text">超レアキャラクター</span>
+                    <span class="rare-score">超高得点！！</span>
+                </div>
+                <p class="rare-note">※運が良ければ出会えるかも...？</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
