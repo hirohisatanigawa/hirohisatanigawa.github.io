@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴミマスター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-area">
+            <div id="falling-item"></div>
+            <div id="dog-character" class="hidden"></div>
+            <div id="feedback-mark" class="hidden"></div>
+        </div>
+        
+        <div id="trash-bins">
+            <button id="burnable" class="trash-bin">
+                <div class="bin-icon">🔥</div>
+                <div class="bin-label">もえるごみ</div>
+            </button>
+            <button id="nonburnable" class="trash-bin">
+                <div class="bin-icon">🚫</div>
+                <div class="bin-label">もえないごみ</div>
+            </button>
+            <button id="can" class="trash-bin">
+                <div class="bin-icon">🥫</div>
+                <div class="bin-label">あきかん</div>
+            </button>
+        </div>
+        
+        <div id="game-info">
+            <div id="score">てんすう: <span id="score-value">0</span>/20</div>
+            <div id="lives">
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+            </div>
+        </div>
+        
+        <div id="start-screen" class="screen">
+            <h1>ごみマスター</h1>
+            <p>ごみを ただしく わけよう！</p>
+            <button id="start-button">げーむ かいし</button>
+        </div>
+        
+        <div id="game-over-screen" class="screen hidden">
+            <h1>げーむ おわり</h1>
+            <p>もういちど ちょうせんしよう！</p>
+            <button id="restart-button">もういちど</button>
+        </div>
+        
+        <div id="clear-screen" class="screen hidden">
+            <h1>げーむ くりあ！</h1>
+            <p>おめでとう！ごみ わけわけ マスターです！</p>
+            <button id="play-again-button">もういちど</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
