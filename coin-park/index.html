@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わくわくコインパーク</title>
+  <script type="module" crossorigin src="/coin-park/assets/index-B0E6M6vm.js"></script>
+  <link rel="stylesheet" crossorigin href="/coin-park/assets/index-BVBuwZFX.css">
+</head>
+<body>
+  <div id="app">
+    <header class="game-header">
+      <h1>わくわくコインパーク</h1>
+      <div class="header-controls">
+        <button id="settings-btn" class="btn btn-secondary">設定</button>
+        <button id="help-btn" class="btn btn-secondary">ヘルプ</button>
+      </div>
+    </header>
+
+    <div class="game-info">
+      <div class="level-info">
+        <span>もんだい: <span id="current-problem">1</span> / <span id="total-problems">10</span></span>
+      </div>
+      <div class="coin-count">
+        <span>コイン: <span id="total-coins">50</span>枚</span>
+      </div>
+    </div>
+
+    <main class="game-area">
+      <div class="shop-section">
+        <div class="shop" id="shop">
+          <h2 class="shop-title">くだものやさん</h2>
+          <div class="shop-items" id="shop-items">
+            <div class="shop-item" data-item="apple" data-price="7">
+              <div class="item-image">🍎</div>
+              <div class="item-name">りんご</div>
+              <div class="item-price">7円</div>
+            </div>
+            <div class="shop-item" data-item="banana" data-price="5">
+              <div class="item-image">🍌</div>
+              <div class="item-name">バナナ</div>
+              <div class="item-price">5円</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-section">
+          <div class="customer" id="customer">
+            <div class="customer-image">👧</div>
+            <div class="customer-speech">
+              <div class="speech-bubble">
+                <span id="customer-message">りんごとバナナください</span>
+              </div>
+            </div>
+          </div>
+          <div class="total-section">
+            <span id="total-hint" style="display: none;">ごうけい：<span id="total-amount">__</span>円</span>
+            <button id="hint-button" class="btn btn-secondary">ヒント</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-controls">
+        <div class="wallet-section">
+          <h3>おさいふ</h3>
+          <div class="wallet" id="wallet">
+            <div class="coin-group">
+              <div class="coin-label">10円:</div>
+              <div class="coins-container" id="ten-coins">
+                <!-- コインは動的に生成されます -->
+              </div>
+            </div>
+            <div class="coin-group">
+              <div class="coin-label">1円:</div>
+              <div class="coins-container" id="one-coins">
+                <!-- コインは動的に生成されます -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="register-section">
+          <h3>レジ</h3>
+          <div class="register" id="register">
+            <div class="register-display">
+              <span id="register-amount">0円</span>
+            </div>
+            <div class="register-coins" id="register-coins">
+            </div>
+          </div>
+          <button id="check-answer" class="btn btn-primary">おしはらい</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="feedback-section" id="feedback" style="display: none;">
+      <div class="feedback-content">
+        <div class="feedback-message" id="feedback-message"></div>
+        <button id="next-problem" class="btn btn-primary">つぎのもんだい</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
