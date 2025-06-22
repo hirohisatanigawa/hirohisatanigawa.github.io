@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景グラデーション -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#FFE66D"/>
+      <stop offset="100%" style="stop-color:#FF6B6B"/>
+    </radialGradient>
+    <radialGradient id="coinGradient" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#D4A574"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- 背景円 -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGradient)" stroke="#333" stroke-width="8"/>
+  
+  <!-- メインコイン -->
+  <circle cx="256" cy="256" r="180" fill="url(#coinGradient)" stroke="#B8860B" stroke-width="6"/>
+  
+  <!-- コインの縁 -->
+  <circle cx="256" cy="256" r="165" fill="none" stroke="#B8860B" stroke-width="3"/>
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#DAA520" stroke-width="2"/>
+  
+  <!-- 数字10 -->
+  <text x="230" y="280" font-family="Arial Black, sans-serif" font-size="120" font-weight="bold" fill="#8B4513" text-anchor="start">10</text>
+  
+  <!-- 装飾的な星 -->
+  <polygon points="256,100 266,130 296,130 272,148 282,178 256,160 230,178 240,148 216,130 246,130" fill="#FFE66D" stroke="#FF6B6B" stroke-width="2"/>
+  <polygon points="140,200 145,210 155,210 147,216 152,226 140,220 128,226 133,216 125,210 135,210" fill="#FFE66D"/>
+  <polygon points="372,320 377,330 387,330 379,336 384,346 372,340 360,346 365,336 357,330 367,330" fill="#FFE66D"/>
+</svg>

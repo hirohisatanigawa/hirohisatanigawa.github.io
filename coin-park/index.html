@@ -2,10 +2,31 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>わくわくコインパーク</title>
-  <script type="module" crossorigin src="/coin-park/assets/index-Bg7bn62w.js"></script>
-  <link rel="stylesheet" crossorigin href="/coin-park/assets/index-CM-OP6ng.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>わくわくコインパーク</title>
+  
+  <!-- PWA対応 -->
+  <link rel="manifest" href="/coin-park/manifest.json">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="description" content="小学1年生向け繰り上がり足し算学習ゲーム">
+  
+  <!-- iOS対応 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="コインパーク">
+  <link rel="apple-touch-icon" href="/coin-park/icons/icon-152x152.png">
+  <link rel="apple-touch-startup-image" href="/coin-park/icons/icon-512x512.png">
+  
+  <!-- Android対応 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="コインパーク">
+  
+  <!-- アイコン -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/coin-park/icons/icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/coin-park/icons/icon-16x16.png">
+  
+  <script type="module" crossorigin src="/coin-park/assets/index-CjWhrjCK.js"></script>
+  <link rel="stylesheet" crossorigin href="/coin-park/assets/index-CrRmdbLN.css">
 </head>
 <body>
   <div id="app">
@@ -101,5 +122,20 @@
     </div>
   </div>
 
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/coin-park/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
