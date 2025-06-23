@@ -1,22 +1,17 @@
-const CACHE_NAME = 'coin-park-v20250624_040537';
+const CACHE_NAME = 'coin-park-v20250624_042612';
 const ASSETS_TO_CACHE = [
-  '/coin-park/',
-  '/coin-park/index.html',
-  // ビルド後に置換されるプレースホルダー
-  '/coin-park/assets/index-B9RZ9N3O.js',
-  '/coin-park/assets/index-Di9JWn99.css',
   '/coin-park/manifest.json',
   // アイコン類
+  '/coin-park/icons/icon-16x16.png',
+  '/coin-park/icons/icon-32x32.png',
+  '/coin-park/icons/icon-72x72.png',
+  '/coin-park/icons/icon-96x96.png',
   '/coin-park/icons/icon-128x128.png',
   '/coin-park/icons/icon-144x144.png',
   '/coin-park/icons/icon-152x152.png',
-  '/coin-park/icons/icon-16x16.png',
   '/coin-park/icons/icon-192x192.png',
-  '/coin-park/icons/icon-32x32.png',
   '/coin-park/icons/icon-384x384.png',
   '/coin-park/icons/icon-512x512.png',
-  '/coin-park/icons/icon-72x72.png',
-  '/coin-park/icons/icon-96x96.png',
   '/coin-park/icons/icon-base.svg'
 ];
 
@@ -52,35 +47,17 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - only ASSETS_TO_CACHEをキャッシュから返し、それ以外は常にネットワークから取得
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request)
-          .then((fetchResponse) => {
-            // Clone the response
-            const responseClone = fetchResponse.clone();
-            
-            // Add to cache if it's a GET request
-            if (event.request.method === 'GET') {
-              caches.open(CACHE_NAME)
-                .then((cache) => {
-                  cache.put(event.request, responseClone);
-                });
-            }
-            
-            return fetchResponse;
-          });
-      })
-      .catch(() => {
-        // If both cache and network fail, return offline page
-        if (event.request.destination === 'document') {
-          return caches.match('/coin-park/index.html');
-        }
-      })
-  );
+  const urlPath = new URL(event.request.url).pathname;
+  if (ASSETS_TO_CACHE.includes(urlPath)) {
+    event.respondWith(
+      caches.match(event.request)
+        .then((response) => response || fetch(event.request))
+    );
+  } else {
+    event.respondWith(fetch(event.request));
+  }
 });
 
 // Background sync for offline support

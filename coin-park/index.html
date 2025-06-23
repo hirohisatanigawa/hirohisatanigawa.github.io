@@ -135,7 +135,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/coin-park/sw.js')
+        navigator.serviceWorker.register('/coin-park/serviceWorker.js')
           .then((registration) => {
             console.log('SW registered: ', registration);
           })
