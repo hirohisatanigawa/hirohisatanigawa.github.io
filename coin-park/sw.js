@@ -1,12 +1,23 @@
-const CACHE_NAME = 'coin-park-v1.0.0';
+const CACHE_NAME = 'coin-park-v20250624_040537';
 const ASSETS_TO_CACHE = [
   '/coin-park/',
   '/coin-park/index.html',
-  '/coin-park/assets/index.css',
-  '/coin-park/assets/index.js',
+  // ビルド後に置換されるプレースホルダー
+  '/coin-park/assets/index-B9RZ9N3O.js',
+  '/coin-park/assets/index-Di9JWn99.css',
   '/coin-park/manifest.json',
+  // アイコン類
+  '/coin-park/icons/icon-128x128.png',
+  '/coin-park/icons/icon-144x144.png',
+  '/coin-park/icons/icon-152x152.png',
+  '/coin-park/icons/icon-16x16.png',
   '/coin-park/icons/icon-192x192.png',
-  '/coin-park/icons/icon-512x512.png'
+  '/coin-park/icons/icon-32x32.png',
+  '/coin-park/icons/icon-384x384.png',
+  '/coin-park/icons/icon-512x512.png',
+  '/coin-park/icons/icon-72x72.png',
+  '/coin-park/icons/icon-96x96.png',
+  '/coin-park/icons/icon-base.svg'
 ];
 
 // Install event - cache assets
